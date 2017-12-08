@@ -184,8 +184,7 @@ print matchResult[h]
 
 cv2.waitKey(0)
 
-
-
+# en kommentar
 
 
 

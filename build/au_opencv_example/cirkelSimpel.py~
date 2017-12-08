@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+import cv2 
+import urllib
+import numpy as np
+import math
+
+a = [0.37,1.64]
+print a
+a = np.around(a, decimals = 1)
+print a
+
+
+image = cv2.imread('oval.jpg')
+cv2.imshow("raw",image)
+cv2.imwrite("original.jpg",image)
+
+print "idiot"
+
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+cv2.imshow("grey",gray)
+
+
+circles = cv2.HoughCircles(gray, cv2.cv.CV_HOUGH_GRADIENT, 1, 20,
+              param1=50,
+              param2=25,
+              minRadius=60,
+              maxRadius=0)
+
+print circles
+
+circles = np.uint32(np.around(circles))
+for i in circles[0,:]:
+    # draw the outer circle
+    cv2.circle(image,(i[0],i[1]),i[2],(0,255,0),2)
+    # draw the center of the circle
+    cv2.circle(image,(i[0],i[1]),10,(0,0,255),3)
+
+cv2.imshow('detected circles',image)
+
+cv2.waitKey(0)
+

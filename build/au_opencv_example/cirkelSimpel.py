@@ -39,6 +39,7 @@ def extract_single_color_range(image,hsv,lower,upper):
     res = cv2.bitwise_and(image,image, mask= mask)
     return res
 
+
 def init():
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
      
@@ -106,7 +107,7 @@ refX, refY = init()
 
 # sx = (math.pow(10, -3)*2.550)/640
 # sy = (math.pow(10, -3)*1.910)/480
-
+#somethige
 
  
 image = get_from_webcam()
